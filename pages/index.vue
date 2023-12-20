@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useAuthenticatedUser } from "~/composables/auth";
-
 definePageMeta({
   middleware: ["protected"],
 });
@@ -18,16 +16,22 @@ const handleLogout = async (e: Event) => {
 </script>
 
 <template>
-  <UCard>
+  <UCard class="min-w-[30rem]">
     <template #header>
       <h1>Profile</h1>
     </template>
-    <p>Username: {{ user.username }}</p>
     <p>User id: {{ user.userId }}</p>
+    <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
     <template #footer>
       <form method="post" action="/api/logout" @submit.prevent="handleLogout">
-        <UButton type="submit" label="Sign out" color="red" />
+        <UButton
+          style="view-transition-name: auth-card-submit"
+          type="submit"
+          label="Sign out"
+          color="red"
+          block
+        />
       </form>
     </template>
   </UCard>

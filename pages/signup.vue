@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useUser } from "~/composables/auth";
-
 const user = useUser();
 if (user.value) {
   await navigateTo("/"); // redirect to profile page
@@ -34,9 +32,17 @@ const handleSubmit = async (e: Event) => {
 </script>
 
 <template>
-  <UCard>
-    <h1>Sign up</h1>
-    <form method="post" action="/api/signup" @submit.prevent="handleSubmit">
+  <UCard class="min-w-[30rem]" style="view-transition-name: auth-card">
+    <template #header>
+      <h1>Sign Up</h1>
+    </template>
+
+    <form
+      method="post"
+      action="/api/signup"
+      @submit.prevent="handleSubmit"
+      class="flex flex-col gap-4"
+    >
       <UInput type="email" name="email" id="email" placeholder="Email" />
       <UInput
         type="text"
@@ -50,9 +56,25 @@ const handleSubmit = async (e: Event) => {
         id="password"
         placeholder="Password"
       />
-      <UButton type="submit" label="Submit" />
+      <UButton
+        style="view-transition-name: auth-card-submit"
+        type="submit"
+        label="Submit"
+        block
+      />
+      <UAlert
+        v-if="errorMessage"
+        variant="subtle"
+        color="red"
+        title="Error"
+        :description="errorMessage"
+      />
     </form>
-    <p class="error">{{ errorMessage }}</p>
-    <NuxtLink to="/login">Sign in</NuxtLink>
+
+    <template #footer>
+      <NuxtLink class="text-sm text-gray-500" to="/login">
+        Already have an account?
+      </NuxtLink>
+    </template>
   </UCard>
 </template>

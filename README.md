@@ -1,75 +1,49 @@
-# Nuxt 3 Minimal Starter
+# Nuxt3 Starter Template
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Features
 
-## Setup
+- Lucia
+- Prisma ORM
+- Planetscale
+- Nuxt UI
+- TailwindCSS
+- Prettier
+- Bun (just for fun)
 
-Make sure to install the dependencies:
+## Requirements
+- [Bun](https://bun.sh/)
+- [Node v20 or higher](https://nodejs.org/en/)
+- [Coffee](https://en.wikipedia.org/wiki/Brazil)
 
+## Instructions
+- Open `.env.example` file and rename it to `.env`
+- Replace The `DATABASE_URL` variable to your Planetscale Database URI
+
+
+## Project Setup
+
+### Install Dependencies
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
 bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Push schema to DB
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+bunx prisma db push
 ```
 
-## Production
-
-Build the application for production:
-
+### Run Development Server
 ```bash
-# npm
-npm run build
+bun dev
+```
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
+### Build for Production
+```bash
 bun run build
 ```
 
-Locally preview production build:
-
+### Preview Production Build
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
