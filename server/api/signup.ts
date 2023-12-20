@@ -1,3 +1,5 @@
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+
 export default defineEventHandler(async (event) => {
 	const { email, password, username } = await readBody<{
 		email: string;
@@ -24,14 +26,13 @@ export default defineEventHandler(async (event) => {
 		authRequest.setSession(session);
 		return sendRedirect(event, "/"); // redirect to profile page
 	} catch (e) {
-		console.log(e);
 		// check for unique constraint error in user table
-		// if (e instanceof SqliteError && e.code === "SQLITE_CONSTRAINT_UNIQUE") {
-		// 	throw createError({
-		// 		message: "email already taken",
-		// 		statusCode: 400
-		// 	});
-		// }
+		if (e instanceof PrismaClientKnownRequestError && e.code === "P2002") {
+			throw createError({
+				message: "email already taken",
+				statusCode: 400
+			});
+		}
 		throw createError({
 			message: "An unknown error occurred",
 			statusCode: 500

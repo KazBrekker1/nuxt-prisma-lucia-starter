@@ -33,17 +33,19 @@ const handleSubmit = async (e: Event) => {
 </script>
 
 <template>
-  <h1>Sign in</h1>
-  <form method="post" action="/api/login" @submit.prevent="handleSubmit">
-    <UInput type="email" name="email" id="email" placeholder="Email" />
-    <UInput
-      type="password"
-      name="password"
-      id="password"
-      placeholder="Password"
-    />
-    <UButton type="submit" label="Submit" />
-  </form>
-  <p class="error">{{ errorMessage }}</p>
-  <NuxtLink to="/signup">Create an account</NuxtLink>
+  <UCard>
+    <h1>Sign in</h1>
+    <form method="post" action="/api/login" @submit.prevent="handleSubmit">
+      <UInput type="email" name="email" id="email" placeholder="Email" />
+      <UInput
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+      />
+      <UButton type="submit" label="Submit" />
+    </form>
+    <p class="error">{{ errorMessage }}</p>
+    <ULink to="/signup">Create an account</ULink>
+  </UCard>
 </template>

@@ -18,11 +18,17 @@ const handleLogout = async (e: Event) => {
 </script>
 
 <template>
-  <h1>Profile</h1>
-  <p>Email: {{ user.email }}</p>
-  <p>User id: {{ user.userId }}</p>
-  <p>Username: {{ user.username }}</p>
-  <form method="post" action="/api/logout" @submit.prevent="handleLogout">
-    <input type="submit" value="Sign out" />
-  </form>
+  <UCard>
+    <template #header>
+      <h1>Profile</h1>
+    </template>
+    <p>Username: {{ user.username }}</p>
+    <p>User id: {{ user.userId }}</p>
+    <p>Email: {{ user.email }}</p>
+    <template #footer>
+      <form method="post" action="/api/logout" @submit.prevent="handleLogout">
+        <UButton type="submit" label="Sign out" color="red" />
+      </form>
+    </template>
+  </UCard>
 </template>
