@@ -12,14 +12,14 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@prisma/client": "^5.7.1",
-    "nuxt": "^3.8.2",
-    "vue": "^3.3.12",
+    "nuxt": "^3.9.0",
+    "vue": "^3.4.3",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^3.0.2",
     "@nuxt/ui": "^2.11.1",
-    "lucia": "^2.7.5",
+    "lucia": "^2.7.6",
     "prisma": "^5.7.1"
   }
 }
