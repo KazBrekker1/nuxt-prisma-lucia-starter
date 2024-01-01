@@ -13,7 +13,7 @@
 ## Requirements
 - [Bun](https://bun.sh/)
 - [Node v20 or higher](https://nodejs.org/en/)
-- [Coffee](https://en.wikipedia.org/wiki/Brazil)
+- [Coffee](https://en.wikipedia.org/wiki/Coffee)
 
 ## Instructions
 - Open `.env.example` file and rename it to `.env`
