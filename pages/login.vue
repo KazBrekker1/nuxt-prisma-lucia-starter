@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const loading = ref(false);
+
 const user = useUser();
 if (user.value) {
   await navigateTo("/"); // redirect to profile page
@@ -10,6 +12,7 @@ const handleSubmit = async (e: Event) => {
   if (!(e.target instanceof HTMLFormElement)) return;
   const formData = new FormData(e.target);
   try {
+    loading.value = true;
     await $fetch("/api/login", {
       method: "POST",
       body: {
@@ -26,6 +29,8 @@ const handleSubmit = async (e: Event) => {
       };
     };
     errorMessage.value = error.message;
+  } finally {
+    loading.value = false;
   }
 };
 </script>
@@ -53,6 +58,7 @@ const handleSubmit = async (e: Event) => {
         style="view-transition-name: auth-card-submit"
         type="submit"
         label="Submit"
+        :loading="loading"
         block
       />
       <UAlert

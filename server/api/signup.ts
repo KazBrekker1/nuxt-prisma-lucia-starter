@@ -33,6 +33,7 @@ export default defineEventHandler(async (event) => {
 				statusCode: 400
 			});
 		}
+		console.error(e);
 		throw createError({
 			message: "An unknown error occurred",
 			statusCode: 500
